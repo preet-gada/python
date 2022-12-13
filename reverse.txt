@@ -1,0 +1,10 @@
+f1 = open("File1.txt","r") 
+lines=f1.readlines() 
+lines=[i.replace("\n","") 
+for i in lines] 
+print(lines)
+
+new_lines=[] for i in lines: temp=''
+for j in range(len(i)): temp+=i[len(i)-1-j]
+new_lines.append(temp) print(new_lines)
+f1.close()

@@ -1,0 +1,20 @@
+import re
+f1 = open("File1.txt","r")
+lines = f1.readlines()
+f1.close()
+lines = [i.replace("\n","") for i in lines]
+name_pattern = r"[M|m][R|R|S|r|r|s][S|s]{,1}\..*" names=[]
+for i in lines:
+y=re.findall(name_pattern,i) if len(y)>0 and y[0]==i: names.append(y[0])
+print(names)
+email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z.]{2,}\b' emails=[]
+for i in lines: y=re.findall(email_pattern,i) if len(y)>0 and y[0]==i:
+emails.append(y[0]) print(emails)
+website_pattern = r"\b(http://|https://|www.)[a-zA-Z.]*.[a-zA-Z.]{2,}" websites=[]
+for i in lines:
+y=re.findall(website_pattern,i) if len(y)>0:
+websites.append(i) print(websites)
+number_pattern = r"\b[0-9-*]+" numberss=[]
+for i in lines:
+y=re.findall(number_pattern,i) if len(y)>0:
+numberss.append(i) print(numberss)

@@ -1,0 +1,25 @@
+import socket
+def mpm():
+host = "127.0.0.1"
+port=3000
+s = socket.socket() s.bind((host,port))
+s.listen()
+c,adrr = s.accept() print(f"Client Address: {adrr}") while True:
+code = c.recv(1024)
+msg = code.decode("ascii")
+print(f"Client: {msg}")
+msg = input(">>> ")
+code = msg.encode("ascii") c.send(code)
+mpm()
+
+# Client
+import socket
+def mpm():
+host = "127.0.0.1" port = 3000
+s = socket.socket() s.connect((host,port)) print("Server Connected: ") 
+while True:
+msg = input(">>> ")
+code = msg.encode("ascii") s.send(code)
+code = s.recv(1024)
+msg = code.decode() print(f"Server: {msg}")
+mpm()
